@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  frontend:
+    build: .
+    container_name: clown-frontend
+    restart: unless-stopped
+    environment:
+      BACKEND_HOST: ${BACKEND_HOST:-10.0.3.50}
+      BACKEND_PORT: ${BACKEND_PORT:-3000}
+    ports:
+      - "80:80"

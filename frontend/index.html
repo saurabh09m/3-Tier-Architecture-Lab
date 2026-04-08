@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ClownOps Incident Desk</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-backdrop"></div>
+      <div class="hero-content content-width">
+        <div class="hero-copy">
+          <p class="eyebrow">ClownOps command desk</p>
+          <h1>Track incidents before the tent catches fire twice.</h1>
+          <p class="lead">
+            A lightweight front end for the three-tier demo: clean reporting, fast triage,
+            and a live queue backed by the API and database running on their own VMs.
+          </p>
+          <div class="hero-actions">
+            <a class="hero-link" href="#report-panel">Report Incident</a>
+            <a class="hero-link secondary" href="#queue-panel">Open Queue</a>
+          </div>
+        </div>
+
+        <div class="hero-snapshot" aria-label="Platform snapshot">
+          <p class="snapshot-kicker">Deployment map</p>
+          <ul class="snapshot-list">
+            <li>
+              <span>Frontend</span>
+              <strong>Nginx on VM 1</strong>
+            </li>
+            <li>
+              <span>Backend</span>
+              <strong>Node API on VM 2</strong>
+            </li>
+            <li>
+              <span>Database</span>
+              <strong>MySQL on VM 3</strong>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main class="content content-width">
+      <section class="stats-band" aria-label="Incident stats">
+        <div class="stat-card">
+          <span>Total incidents</span>
+          <strong id="totalCount">0</strong>
+        </div>
+        <div class="stat-card">
+          <span>Critical or high</span>
+          <strong id="priorityCount">0</strong>
+        </div>
+        <div class="stat-card">
+          <span>Last refresh</span>
+          <strong id="lastRefresh">Waiting</strong>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <section class="panel panel-form" id="report-panel" aria-labelledby="report-title">
+          <div class="panel-head">
+            <p class="section-kicker">New incident</p>
+            <h2 id="report-title">Log the next avoidable disaster</h2>
+            <p>
+              Keep the report short, pick a real severity, and let the backend tier do the rest.
+            </p>
+          </div>
+
+          <form id="incidentForm" class="incident-form">
+            <label class="field">
+              <span>Incident title</span>
+              <input type="text" id="title" maxlength="120" placeholder="Example: Honk-based phishing attempt" required />
+            </label>
+
+            <label class="field">
+              <span>Severity</span>
+              <select id="severity" required>
+                <option value="low">Low</option>
+                <option value="medium" selected>Medium</option>
+                <option value="high">High</option>
+                <option value="critical">Critical</option>
+              </select>
+            </label>
+
+            <button type="submit">Submit Incident</button>
+          </form>
+        </section>
+
+        <aside class="panel panel-aside" aria-label="Operations guide">
+          <img src="images/security.jpg" alt="Clown-themed security visual" class="aside-image" />
+          <div class="aside-copy">
+            <p class="section-kicker">Ops notes</p>
+            <h2>What this demo proves</h2>
+            <ul class="checklist">
+              <li>The frontend stays static and simple enough to host on a tiny VM.</li>
+              <li>The API is isolated, so business logic and database access live in one place.</li>
+              <li>The database can be locked down to backend-only traffic.</li>
+            </ul>
+          </div>
+        </aside>
+      </section>
+
+      <section class="dashboard-grid">
+        <section class="panel" id="queue-panel" aria-labelledby="incidents-title">
+          <div class="panel-head compact">
+            <p class="section-kicker">Live queue</p>
+            <h2 id="incidents-title">Incident feed</h2>
+          </div>
+          <ul id="incidentList" class="incident-list"></ul>
+        </section>
+
+        <section class="panel" aria-labelledby="debug-title">
+          <div class="panel-head compact">
+            <p class="section-kicker">Request trace</p>
+            <h2 id="debug-title">API log panel</h2>
+          </div>
+          <pre id="debug">Waiting for the next report...</pre>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
