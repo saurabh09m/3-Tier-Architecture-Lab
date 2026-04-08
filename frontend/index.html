@@ -1,151 +1,210 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ClownOps Incident Desk</title>
+  <title>ClownOps — Incident Desk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-  <div class="site-shell">
+  <div class="page-shell">
+
     <header class="hero">
-      <div class="hero-top content-width">
-        <p class="brand">ClownOps / Three-Tier Incident Desk</p>
-        <p class="hero-summary">
-          A sharper control surface for reporting incidents, tracking queue health, and
-          watching the frontend, API, and database tiers move in lockstep.
-        </p>
-      </div>
-
-      <div class="hero-main content-width">
-        <div class="hero-copy">
-          <ul class="hero-list" aria-label="Platform pillars">
-            <li>Static frontend delivery</li>
-            <li>Validated API workflow</li>
-            <li>Segmented database access</li>
-            <li>Fast incident visibility</li>
-          </ul>
-
-          <div class="hero-display">
-            <p class="eyebrow">ClownOps control surface</p>
-            <h1>
-              <span>Incident</span>
-              <span>Command</span>
-            </h1>
-            <p class="lead">
-              Built for the lab you are running now: file an incident, watch the queue
-              update, and keep the traffic path clean from frontend to backend to MySQL.
-            </p>
-          </div>
-
-          <div class="hero-actions">
-            <a class="hero-link" href="#report-panel">Start Report</a>
-            <a class="hero-link secondary" href="#queue-panel">View Queue</a>
-          </div>
+      <div class="content-width hero-inner">
+        <div class="hero-top">
+          <span class="brand">ClownOps</span>
+          <span class="hero-tag">Incident Desk · v2</span>
         </div>
-
-        <div class="hero-media">
-          <img src="images/security.jpg" alt="Clown security operations visual" class="hero-image" />
-        </div>
+        <h1>Calm tracking for <em>wonderfully</em> uncalm systems.</h1>
+        <p class="hero-sub">Three-tier incident management. One accountability trail.</p>
       </div>
     </header>
 
     <main class="content content-width">
-      <section class="status-strip" aria-label="Tier summary">
-        <div class="status-card">
-          <span>Frontend</span>
-          <strong>Nginx on VM 1</strong>
-        </div>
-        <div class="status-card">
-          <span>Backend</span>
-          <strong>Express API on VM 2</strong>
-        </div>
-        <div class="status-card">
-          <span>Database</span>
-          <strong>MySQL on VM 3</strong>
-        </div>
+
+      <!-- ── Intro grid ──────────────────────────────── -->
+      <section class="intro-grid" aria-label="Product overview">
+
+        <article class="feature-panel">
+          <p class="section-kicker">What this handles</p>
+          <h2>One clean desk for when "it's probably fine" stops doing the job.</h2>
+          <p class="section-copy">
+            Keep the tone light, the workflow useful, and the data path straight
+            through all three tiers. File the incident, label the severity, let
+            the platform handle the serious paperwork.
+          </p>
+          <ul class="feature-list">
+            <li>
+              <span class="fl-icon">01</span>
+              Frontend delivery that stays simple.
+            </li>
+            <li>
+              <span class="fl-icon">02</span>
+              API requests with validation and receipts.
+            </li>
+            <li>
+              <span class="fl-icon">03</span>
+              Database storage that remembers every "small thing."
+            </li>
+          </ul>
+        </article>
+
+        <figure class="panel image-panel">
+          <div class="image-wrap">
+            <img src="images/security.jpg" alt="Clown security operations visual" class="feature-image" />
+          </div>
+          <figcaption>
+            Still friendlier than most incident bridges — and much better at keeping notes.
+          </figcaption>
+        </figure>
+
       </section>
 
-      <section class="workspace">
-        <section class="report-card" id="report-panel" aria-labelledby="report-title">
+      <!-- ── Summary grid ───────────────────────────── -->
+      <section class="summary-grid" aria-label="Queue metrics and notes">
+
+        <section class="panel stats-panel" aria-label="Queue metrics">
+          <p class="section-kicker">Live readout</p>
+          <h2>Queue pulse</h2>
+
+          <div class="stats-list">
+            <div class="stat-row">
+              <span class="stat-label">Total incidents</span>
+              <strong id="totalCount" class="stat-num">0</strong>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Critical or high</span>
+              <strong id="priorityCount" class="stat-num stat-warn">0</strong>
+            </div>
+            <div class="stat-row stat-row--last">
+              <span class="stat-label">Last refresh</span>
+              <strong id="lastRefresh" class="stat-num stat-small">Waiting</strong>
+            </div>
+          </div>
+
+          <div class="tier-notes">
+            <div class="tier-row">
+              <span class="tier-dot t1"></span>
+              <span>Frontend · Nginx · VM 1</span>
+            </div>
+            <div class="tier-row">
+              <span class="tier-dot t2"></span>
+              <span>Backend · Express · VM 2</span>
+            </div>
+            <div class="tier-row">
+              <span class="tier-dot t3"></span>
+              <span>Database · MySQL · VM 3</span>
+            </div>
+          </div>
+        </section>
+
+        <aside class="panel notes-panel" aria-label="Ops notes">
+          <p class="section-kicker">Desk notes</p>
+          <h2>Professional enough for leadership.<br>Honest enough for engineers.</h2>
+          <p class="section-copy">
+            Use this when an issue deserves a real record, not a floating message
+            in chat followed by three people assuming somebody else had it covered.
+          </p>
+          <ul class="notes-list">
+            <li>
+              <span class="nl-marker severity-low">Low</span>
+              Means low — not "I hope nobody checks."
+            </li>
+            <li>
+              <span class="nl-marker severity-high">High</span>
+              Means an engineer is sweating right now.
+            </li>
+            <li>
+              <span class="nl-marker severity-critical">Critical</span>
+              Coffee first. Explanations later.
+            </li>
+          </ul>
+        </aside>
+
+      </section>
+
+      <!-- ── Workspace ──────────────────────────────── -->
+      <section class="workspace" aria-label="Incident workspace">
+
+        <section class="panel form-panel" id="report-panel" aria-labelledby="report-title">
           <div class="section-head">
             <p class="section-kicker">New incident</p>
-            <h2 id="report-title">Log the next avoidable disaster</h2>
+            <h2 id="report-title">Write the title you'd want in the postmortem, not the group chat.</h2>
             <p>
-              Keep the title sharp, assign the right severity, and let the API tier push it
-              downstream.
+              Keep it crisp, pick the right severity, and resist the ancient temptation
+              to mark everything "medium" because it's emotionally convenient.
             </p>
           </div>
 
           <form id="incidentForm" class="incident-form">
             <label class="field">
-              <span>Incident title</span>
-              <input type="text" id="title" maxlength="120" placeholder="Example: Honk-based phishing attempt" required />
+              <span class="field-label">Incident title</span>
+              <input
+                type="text"
+                id="title"
+                maxlength="120"
+                placeholder="e.g. Honk-based phishing attempt detected"
+                autocomplete="off"
+                required
+              />
             </label>
 
             <label class="field">
-              <span>Severity</span>
-              <select id="severity" required>
-                <option value="low">Low</option>
-                <option value="medium" selected>Medium</option>
-                <option value="high">High</option>
-                <option value="critical">Critical</option>
-              </select>
+              <span class="field-label">Severity</span>
+              <div class="select-wrap">
+                <select id="severity" required>
+                  <option value="low">Low</option>
+                  <option value="medium" selected>Medium</option>
+                  <option value="high">High</option>
+                  <option value="critical">Critical</option>
+                </select>
+                <span class="select-arrow" aria-hidden="true">↓</span>
+              </div>
             </label>
 
-            <button type="submit">Submit Incident</button>
+            <button type="submit" class="btn-submit">
+              <span>Submit Incident</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </button>
           </form>
         </section>
 
-        <aside class="metrics-card" aria-label="Queue metrics">
-          <div class="section-head compact">
-            <p class="section-kicker">Live metrics</p>
-            <h2>Queue pulse</h2>
-          </div>
-
-          <div class="metric-stack">
-            <div class="metric-block">
-              <span>Total incidents</span>
-              <strong id="totalCount">0</strong>
-            </div>
-            <div class="metric-block">
-              <span>Critical or high</span>
-              <strong id="priorityCount">0</strong>
-            </div>
-            <div class="metric-block">
-              <span>Last refresh</span>
-              <strong id="lastRefresh">Waiting</strong>
-            </div>
-          </div>
-        </aside>
-      </section>
-
-      <section class="data-grid">
-        <section class="queue-card" id="queue-panel" aria-labelledby="incidents-title">
+        <section class="panel queue-panel" id="queue-panel" aria-labelledby="incidents-title">
           <div class="section-head compact">
             <p class="section-kicker">Incident feed</p>
             <h2 id="incidents-title">Latest incidents</h2>
+            <p>Fresh from the API. Sorted with more care than most stand-ups.</p>
           </div>
-          <ul id="incidentList" class="incident-list"></ul>
+          <ul id="incidentList" class="incident-list" aria-live="polite"></ul>
         </section>
 
-        <section class="trace-card" aria-labelledby="debug-title">
-          <div class="section-head compact">
-            <p class="section-kicker">Request trace</p>
-            <h2 id="debug-title">API log panel</h2>
-          </div>
-          <pre id="debug">Waiting for the next report...</pre>
-        </section>
       </section>
 
-      <section class="footer-marquee" aria-label="Deployment notes">
-        <span>Frontend -> Backend on tcp/3000</span>
-        <span>Backend -> Database on tcp/3306</span>
-        <span>Static image delivery</span>
-        <span>Runtime environment variables</span>
-        <span>Three VMs, one incident flow</span>
+      <!-- ── API log ────────────────────────────────── -->
+      <section class="panel trace-panel" aria-labelledby="debug-title">
+        <div class="section-head compact">
+          <p class="section-kicker">Request trace</p>
+          <h2 id="debug-title">API log panel</h2>
+          <p>
+            For those elegant moments when the firewall says yes, the logs say maybe,
+            and everyone suddenly becomes very interested in packet captures.
+          </p>
+        </div>
+        <pre id="debug" role="log" aria-label="API request log">Waiting for the next report...</pre>
       </section>
+
+      <!-- ── Footer strip ───────────────────────────── -->
+      <footer class="footer-strip" aria-label="Deployment notes">
+        <span>Frontend → Backend on tcp/3000</span>
+        <span>Backend → Database on tcp/3306</span>
+        <span>Static image, dynamic queue</span>
+        <span>Three VMs, one accountability trail</span>
+      </footer>
+
     </main>
   </div>
 
