@@ -8,66 +8,73 @@
 </head>
 
 <body>
-  <div class="page-shell">
+  <div class="site-shell">
     <header class="hero">
-      <div class="hero-backdrop"></div>
-      <div class="hero-content content-width">
+      <div class="hero-top content-width">
+        <p class="brand">ClownOps / Three-Tier Incident Desk</p>
+        <p class="hero-summary">
+          A sharper control surface for reporting incidents, tracking queue health, and
+          watching the frontend, API, and database tiers move in lockstep.
+        </p>
+      </div>
+
+      <div class="hero-main content-width">
         <div class="hero-copy">
-          <p class="eyebrow">ClownOps command desk</p>
-          <h1>Track incidents before the tent catches fire twice.</h1>
-          <p class="lead">
-            A lightweight front end for the three-tier demo: clean reporting, fast triage,
-            and a live queue backed by the API and database running on their own VMs.
-          </p>
+          <ul class="hero-list" aria-label="Platform pillars">
+            <li>Static frontend delivery</li>
+            <li>Validated API workflow</li>
+            <li>Segmented database access</li>
+            <li>Fast incident visibility</li>
+          </ul>
+
+          <div class="hero-display">
+            <p class="eyebrow">ClownOps control surface</p>
+            <h1>
+              <span>Incident</span>
+              <span>Command</span>
+            </h1>
+            <p class="lead">
+              Built for the lab you are running now: file an incident, watch the queue
+              update, and keep the traffic path clean from frontend to backend to MySQL.
+            </p>
+          </div>
+
           <div class="hero-actions">
-            <a class="hero-link" href="#report-panel">Report Incident</a>
-            <a class="hero-link secondary" href="#queue-panel">Open Queue</a>
+            <a class="hero-link" href="#report-panel">Start Report</a>
+            <a class="hero-link secondary" href="#queue-panel">View Queue</a>
           </div>
         </div>
 
-        <div class="hero-snapshot" aria-label="Platform snapshot">
-          <p class="snapshot-kicker">Deployment map</p>
-          <ul class="snapshot-list">
-            <li>
-              <span>Frontend</span>
-              <strong>Nginx on VM 1</strong>
-            </li>
-            <li>
-              <span>Backend</span>
-              <strong>Node API on VM 2</strong>
-            </li>
-            <li>
-              <span>Database</span>
-              <strong>MySQL on VM 3</strong>
-            </li>
-          </ul>
+        <div class="hero-media">
+          <img src="images/security.jpg" alt="Clown security operations visual" class="hero-image" />
         </div>
       </div>
     </header>
 
     <main class="content content-width">
-      <section class="stats-band" aria-label="Incident stats">
-        <div class="stat-card">
-          <span>Total incidents</span>
-          <strong id="totalCount">0</strong>
+      <section class="status-strip" aria-label="Tier summary">
+        <div class="status-card">
+          <span>Frontend</span>
+          <strong>Nginx on VM 1</strong>
         </div>
-        <div class="stat-card">
-          <span>Critical or high</span>
-          <strong id="priorityCount">0</strong>
+        <div class="status-card">
+          <span>Backend</span>
+          <strong>Express API on VM 2</strong>
         </div>
-        <div class="stat-card">
-          <span>Last refresh</span>
-          <strong id="lastRefresh">Waiting</strong>
+        <div class="status-card">
+          <span>Database</span>
+          <strong>MySQL on VM 3</strong>
         </div>
       </section>
 
       <section class="workspace">
-        <section class="panel panel-form" id="report-panel" aria-labelledby="report-title">
-          <div class="panel-head">
+        <section class="report-card" id="report-panel" aria-labelledby="report-title">
+          <div class="section-head">
             <p class="section-kicker">New incident</p>
             <h2 id="report-title">Log the next avoidable disaster</h2>
             <p>
-              Keep the report short, pick a real severity, and let the backend tier do the rest.
+              Keep the title sharp, assign the right severity, and let the API tier push it
+              downstream.
             </p>
           </div>
 
@@ -91,36 +98,53 @@
           </form>
         </section>
 
-        <aside class="panel panel-aside" aria-label="Operations guide">
-          <img src="images/security.jpg" alt="Clown-themed security visual" class="aside-image" />
-          <div class="aside-copy">
-            <p class="section-kicker">Ops notes</p>
-            <h2>What this demo proves</h2>
-            <ul class="checklist">
-              <li>The frontend stays static and simple enough to host on a tiny VM.</li>
-              <li>The API is isolated, so business logic and database access live in one place.</li>
-              <li>The database can be locked down to backend-only traffic.</li>
-            </ul>
+        <aside class="metrics-card" aria-label="Queue metrics">
+          <div class="section-head compact">
+            <p class="section-kicker">Live metrics</p>
+            <h2>Queue pulse</h2>
+          </div>
+
+          <div class="metric-stack">
+            <div class="metric-block">
+              <span>Total incidents</span>
+              <strong id="totalCount">0</strong>
+            </div>
+            <div class="metric-block">
+              <span>Critical or high</span>
+              <strong id="priorityCount">0</strong>
+            </div>
+            <div class="metric-block">
+              <span>Last refresh</span>
+              <strong id="lastRefresh">Waiting</strong>
+            </div>
           </div>
         </aside>
       </section>
 
-      <section class="dashboard-grid">
-        <section class="panel" id="queue-panel" aria-labelledby="incidents-title">
-          <div class="panel-head compact">
-            <p class="section-kicker">Live queue</p>
-            <h2 id="incidents-title">Incident feed</h2>
+      <section class="data-grid">
+        <section class="queue-card" id="queue-panel" aria-labelledby="incidents-title">
+          <div class="section-head compact">
+            <p class="section-kicker">Incident feed</p>
+            <h2 id="incidents-title">Latest incidents</h2>
           </div>
           <ul id="incidentList" class="incident-list"></ul>
         </section>
 
-        <section class="panel" aria-labelledby="debug-title">
-          <div class="panel-head compact">
+        <section class="trace-card" aria-labelledby="debug-title">
+          <div class="section-head compact">
             <p class="section-kicker">Request trace</p>
             <h2 id="debug-title">API log panel</h2>
           </div>
           <pre id="debug">Waiting for the next report...</pre>
         </section>
+      </section>
+
+      <section class="footer-marquee" aria-label="Deployment notes">
+        <span>Frontend -> Backend on tcp/3000</span>
+        <span>Backend -> Database on tcp/3306</span>
+        <span>Static image delivery</span>
+        <span>Runtime environment variables</span>
+        <span>Three VMs, one incident flow</span>
       </section>
     </main>
   </div>
