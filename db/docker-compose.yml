@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  db:
+    image: mysql:8
+    container_name: clown-db
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - clown-db-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+volumes:
+  clown-db-data:

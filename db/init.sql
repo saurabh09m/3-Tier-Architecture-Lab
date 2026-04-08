@@ -1,0 +1,13 @@
+CREATE DATABASE IF NOT EXISTS clowndb;
+USE clowndb;
+
+CREATE TABLE IF NOT EXISTS incidents (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(120) NOT NULL,
+  severity ENUM('low', 'medium', 'high', 'critical') NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE USER IF NOT EXISTS 'appuser'@'%' IDENTIFIED BY 'apppass';
+GRANT ALL PRIVILEGES ON clowndb.* TO 'appuser'@'%';
+FLUSH PRIVILEGES;
